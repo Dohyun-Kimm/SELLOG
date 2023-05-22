@@ -68,32 +68,34 @@
 
 <details><summary> <b> 상세 기술스택 및 버전</b> </summary>
 
-| 구분     | 기술스택        | 상세내용           | 버전      |
-| -------- | --------------- | ------------------ | --------- |
-| 공통     | 형상관리        | Gitlab             | \-        |
-|          | 이슈관리        | Jira               | \-        |
-|          | 커뮤니케이션    | Mattermost, Notion | \-        |
-| BackEnd  | DB              | MySQL              | 8.0.21    |
-|          |                 | JPA                | \-        |
-|          |                 | QueryDSL           | \-        |
-|          | Java            | OpenJDK            | 11.0.16.1 |
-|          | Spring          | Spring Boot        | 2.4.5     |
-|          | IDE             | IntelliJ           | \-        |
-|          | Build           | Gradle             | 7.5.1     |
-| FrontEnd | HTML5           |                    | \-        |
-|          | CSS3            |                    | \-        |
-|          | JavaScript(ES6) |                    | \-        |
-|          | React           | React              | 18.2.0    |
-|          |                 | styled-components  | 5.3.6     |
-|          |                 | axios              | 1.2.3     |
-|          |                 | Three.js           | 0.151.3   |
-|          | IDE             | Visual Studio Code | 1.75.1    |
-| Server   | Server          | AWS EC2            | \-        |
-|          | Server          | AWS EC2 S3         | \-        |
-|          | Server          | Nginx              | 1.18.0    |
-|          | 배포            | Docker             | 20.10.23  |
-|          | 배포            | Jenkins            | 2.378.1   |
-| Test     | test            | Postman            | 10.9.4    |
+| 구분       | 기술스택               | 버전        |
+| -------- | ------------------ | --------- |
+| General  | Gitlab             | -         |
+|          | Jira               | \-        |
+|          | Mattermost, Notion | \-        |
+| BackEnd  | OpenJDK            | 11.0.16.1 |
+|          | Spring Boot        | 2.4.5     |
+|          | Gradle             | 7.5.1     |
+|          | IntelliJ           | \-        |
+| FrontEnd | HTML5              | \-        |
+|          | CSS3               | \-        |
+|          | Typescript         | 4.9.3     |
+|          | React              | 18.2.0    |
+|          | Recoil             | 0.7.7     |
+|          | styled-components  | 5.3.9     |
+|          | axios              | 1.3.5     |
+|          | Three.js           | 0.151.3   |
+|          | Vite               | 4.2.0     |
+|          | Visual Studio Code | 1.75.1    |
+| Database | MySQL              | 8.0.21    |
+|          | JPA                | \-        |
+|          | QueryDSL           | \-        |
+| Server   | AWS EC2            | \-        |
+|          | AWS EC2 S3         | \-        |
+|          | Nginx              | 1.18.0    |
+|          | Docker             | 20.10.23  |
+|          | Jenkins            | 2.378.1   |
+| Test     | Postman            | 10.9.4    |
 
 </details>
 
@@ -101,8 +103,8 @@
 
 ## 🗂️ 시스템 아키텍처
 
-|                                                    시스템 아키텍처                                                     |
-| :--------------------------------------------------------------------------------------------------------------------: |
+| 시스템 아키텍처                                                                                                               |
+|:----------------------------------------------------------------------------------------------------------------------:|
 | ![system](https://github.com/bohodays/Algorithm_problem_solving/assets/109454527/cf135497-4ff2-4583-a6cc-8b038c29064e) |
 
 <br/>
@@ -131,773 +133,113 @@
 
 <details><summary> <b> Front-end </b> </summary>
 
-```java
-C:.
-│  README.md
-│
-└─front-end
-    │  .gitignore
-    │  Dockerfile
-    │  index.html
-    │  package-lock.json
-    │  package.json
-    │  README.md
-    │  tsconfig.json
-    │  tsconfig.node.json
-    │  vite.config.ts
-    │
+```markup-templating
+front-end
     ├─nginx
-    │      nginx.conf
-    │
     ├─public
-    │  │  vite.svg
-    │  │
     │  └─models
-    │      │  bloomer.glb
-    │      │  car.glb
-    │      │  clouds.glb
-    │      │  cs_direct.glb
-    │      │  deco.glb
-    │      │  DoLearn.glb
-    │      │  feed.glb
-    │      │  feed_direct.glb
-    │      │  floor.glb
-    │      │  flower.glb
-    │      │  grass.glb
-    │      │  ground.glb
-    │      │  house.glb
-    │      │  itemshop.glb
-    │      │  learnway.glb
-    │      │  login.glb
-    │      │  maker.glb
-    │      │  newCsQuiz.glb
-    │      │  obaek.glb
-    │      │  osakak.glb
-    │      │  room_direct.glb
-    │      │  Sellog.glb
-    │      │  shop_direct.glb
-    │      │  stone.glb
-    │      │  tantan.glb
-    │      │  tree.glb
-    │      │  weather.glb
-    │      │  ydg.glb
-    │      │
     │      ├─characters
-    │      │      f1.glb
-    │      │      f2.glb
-    │      │      f3.glb
-    │      │      m1.glb
-    │      │      m2.glb
-    │      │      m3.glb
-    │      │
     │      ├─csQuiz
-    │      │      f1.glb
-    │      │      f2.glb
-    │      │      f3.glb
-    │      │      m1.glb
-    │      │      m2.glb
-    │      │      m3.glb
-    │      │      oMark.glb
-    │      │      xMark.glb
-    │      │
     │      ├─font
-    │      │      csquiz_font.glb
-    │      │      feed_font.glb
-    │      │      itemShop_font.glb
-    │      │      myroom_font.glb
-    │      │
     │      ├─items
-    │      │      bedside_light_1.glb
-    │      │      black_chair_1.glb
-    │      │      black_coffeemachine_1.glb
-    │      │      black_cup_1.glb
-    │      │      black_leather_sofa_1.glb
-    │      │      black_speaker_1.glb
-    │      │      black_teatable_1.glb
-    │      │      blue_bed.glb
-    │      │      blue_chair_1.glb
-    │      │      blue_chair_2.glb
-    │      │      blue_sofa_1.glb
-    │      │      brown_table_1.glb
-    │      │      brown_table_2.glb
-    │      │      brown_table_3.glb
-    │      │      brown_table_4.glb
-    │      │      coffee_cup_1.glb
-    │      │      elec_guitar_1.glb
-    │      │      elec_guitar_2.glb
-    │      │      elec_guitar_3.glb
-    │      │      giant_sofa_1.glb
-    │      │      green_sofa_1.glb
-    │      │      grey_bin_1.glb
-    │      │      group_guitar_1.glb
-    │      │      house_tree_1.glb
-    │      │      imac_computer_1.glb
-    │      │      katana_decoration_1.glb
-    │      │      leopard_chair_1.glb
-    │      │      low_table_1.glb
-    │      │      marble_table_1.glb
-    │      │      marble_table_2.glb
-    │      │      old_computer_1.glb
-    │      │      old_computer_2.glb
-    │      │      old_microwave_1.glb
-    │      │      old_tv_1.glb
-    │      │      orange_sofa_1.glb
-    │      │      photo_frame_1.glb
-    │      │      photo_frame_2.glb
-    │      │      red_chair_1.glb
-    │      │      red_lights_1.glb
-    │      │      red_sofa_1.glb
-    │      │      red_telephone_1.glb
-    │      │      retro_arcadegame_1.glb
-    │      │      round_table_1.glb
-    │      │      small_speaker_1.glb
-    │      │      stall_white_chair_1.glb
-    │      │      starwars_trooper_1.glb
-    │      │      teddybear_1.glb
-    │      │      tree_vase_1.glb
-    │      │      trooper_figure_1.glb
-    │      │      white_chair_1.glb
-    │      │      white_controller_1.glb
-    │      │      white_skeleton_1.glb
-    │      │      white_sofa_1.glb
-    │      │      white_table_1.glb
-    │      │      wine_glass_1.glb
-    │      │      wood_chair_1.glb
-    │      │      wood_desk_0.glb
-    │      │      wood_desk_1.glb
-    │      │      wood_desk_2.glb
-    │      │      wood_drawer_1.glb
-    │      │      wood_shelve.glb
-    │      │      wood_table_1.glb
-    │      │      yellow_sofa_1.glb
-    │      │
     │      ├─otherCharacters
-    │      │      f1.glb
-    │      │      f2.glb
-    │      │      f3.glb
-    │      │      m1.glb
-    │      │      m2.glb
-    │      │      m3.glb
-    │      │
     │      └─room
-    │              room1.glb
-    │              room2.glb
-    │              room3.glb
-    │              room4.glb
-    │
     └─src
-        │  App.css
-        │  App.tsx
-        │  AppStyles.tsx
-        │  index.css
-        │  main.tsx
-        │  vite-env.d.ts
-        │
         ├─api
-        │      csQuiz.ts
-        │      feed.ts
-        │      http.ts
-        │      record.ts
-        │      room.ts
-        │      store.ts
-        │      user.ts
-        │
         ├─assets
-        │  │  react.svg
-        │  │
         │  ├─font
-        │  │      Neoneon.otf
-        │  │
         │  └─imgs
-        │      │  algo_logo.png
-        │      │  blog_logo.png
-        │      │  csquiz_battle_img.png
-        │      │  csquiz_img.png
-        │      │  cs_logo.png
-        │      │  feed_logo.png
-        │      │  github_logo.png
-        │      │  Loading.json
-        │      │  logo.png
-        │      │  tistory_logo.png
-        │      │  turtle-loading.json
-        │      │
         │      ├─items
-        │      │      bedside_light_1.png
-        │      │      big_car_1.png
-        │      │      black_chair_1.png
-        │      │      black_coffeemachine_1.png
-        │      │      black_cup_1.png
-        │      │      black_leather_sofa_1.png
-        │      │      black_speaker_1.png
-        │      │      black_teatable_1.png
-        │      │      blue_car_1.png
-        │      │      blue_chair_1.png
-        │      │      blue_chair_2.png
-        │      │      blue_sofa_1.png
-        │      │      brown_table_1.png
-        │      │      brown_table_2.png
-        │      │      brown_table_3.png
-        │      │      brown_table_4.png
-        │      │      coffee_cup_1.png
-        │      │      elec_guitar_1.png
-        │      │      elec_guitar_2.png
-        │      │      elec_guitar_3.png
-        │      │      giant_sofa_1.png
-        │      │      green_sofa_1.png
-        │      │      grey_bin_1.png
-        │      │      group_guitar_1.png
-        │      │      house_tree_1.png
-        │      │      imac_computer_1.png
-        │      │      katana_decoration_1.png
-        │      │      leopard_chair_1.png
-        │      │      low_table_1.png
-        │      │      marble_table_1.png
-        │      │      marble_table_2.png
-        │      │      old_computer_1.png
-        │      │      old_computer_2.png
-        │      │      old_microwave_1.png
-        │      │      old_tv_1.png
-        │      │      orange_sofa_1.png
-        │      │      photo_frame_1.png
-        │      │      photo_frame_2.png
-        │      │      red_car_1.png
-        │      │      red_chair_1.png
-        │      │      red_lights_1.png
-        │      │      red_sofa_1.png
-        │      │      red_telephone_1.png
-        │      │      retro_arcadegame_1.png
-        │      │      round_table_1.png
-        │      │      small_speaker_1.png
-        │      │      stall_white_chair_1.png
-        │      │      starwars_trooper_1.png
-        │      │      teddybear_1.png
-        │      │      tree_vase_1.png
-        │      │      trooper_figure_1.png
-        │      │      white_controller_1.png
-        │      │      white_skeleton_1.png
-        │      │      white_sofa_1.png
-        │      │      white_table_1.png
-        │      │      wine_glass_1.png
-        │      │      wood_chair_1.png
-        │      │      wood_desk_1.png
-        │      │      wood_desk_2.png
-        │      │      wood_drawer_1.png
-        │      │      wood_table_1.png
-        │      │      yellow_sofa_1.png
-        │      │
         │      ├─itemShop
-        │      │      cool.png
-        │      │      rainbow.png
-        │      │
         │      ├─main
-        │      │      bloomerImg.png
-        │      │      grid.png
-        │      │
         │      └─retro
-        │              404NotFound.png
-        │              blue_eye.png
-        │              chrome_logo.png
-        │              coin.png
-        │              github.png
-        │              githubIcon.png
-        │              green_flower.png
-        │              item_sample.png
-        │              memo.png
-        │              pencil_retro.png
-        │              profile tape.png
-        │              profilePic.jpeg
-        │              red_ghost.png
-        │              retro_img.png
-        │              smile.png
-        │              smile_and_light.png
-        │              smile_bottom.png
-        │              smile_computer.png
-        │              smile_large.png
-        │              spring.png
-        │              star.png
-        │              tistoryIcon.png
-        │              work_hard.png
-        │              yellow_flower.png
-        │              yellow_ghost.png
-        │
         ├─components
         │  ├─common
         │  │  └─Button
-        │  │          Button.tsx
-        │  │          styles.tsx
-        │  │
         │  ├─CSQuiz
         │  │  ├─CSQuizContents
-        │  │  │      CSQuizContents.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  └─CSQuizTimer
-        │  │          CSQuizTimer.tsx
-        │  │          styles.tsx
-        │  │
         │  ├─CSQuizMap
         │  │  └─CharacterModels
-        │  │          F1_CS.tsx
-        │  │          F2_CS.tsx
-        │  │          F3_CS.tsx
-        │  │          M1_CS.tsx
-        │  │          M2_CS.tsx
-        │  │          M3_CS.tsx
-        │  │
         │  ├─Feed
-        │  │      FeedComponent.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─ItemShop
         │  │  ├─ItemItem
-        │  │  │      ItemItem.tsx
-        │  │  │      ItemModalStyle.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  ├─ItemList
-        │  │  │      ItemList.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  ├─ItemModal.tsx
-        │  │  │      ItemModal.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  └─ItemWrapper
-        │  │      │  ItemWrapper.tsx
-        │  │      │
         │  │      └─Models
-        │  │              Bedside_light_1.tsx
-        │  │              Black_chair_1.tsx
-        │  │              Black_coffeemachine_1.tsx
-        │  │              Black_cup_1.tsx
-        │  │              Black_leather_sofa_1.tsx
-        │  │              Black_speaker_1.tsx
-        │  │              Black_teatable_1.tsx
-        │  │              Blue_bed.tsx
-        │  │              Blue_chair_1.tsx
-        │  │              Blue_chair_2.tsx
-        │  │              Blue_sofa_1.tsx
-        │  │              Brown_table_1.tsx
-        │  │              Brown_table_2.tsx
-        │  │              Brown_table_3.tsx
-        │  │              Brown_table_4.tsx
-        │  │              Coffee_cup_1.tsx
-        │  │              Elec_guitar_1.tsx
-        │  │              Elec_guitar_2.tsx
-        │  │              Elec_guitar_3.tsx
-        │  │              Giant_sofa_1.tsx
-        │  │              Green_sofa_1.tsx
-        │  │              Grey_bin_1.tsx
-        │  │              Group_guitar_1.tsx
-        │  │              House_tree_1.tsx
-        │  │              Imac_computer_1.tsx
-        │  │              Katana_decoration_1.tsx
-        │  │              Leopard_chair_1.tsx
-        │  │              Low_table_1.tsx
-        │  │              Marble_table_1.tsx
-        │  │              Marble_table_2.tsx
-        │  │              Old_computer_1.tsx
-        │  │              Old_computer_2.tsx
-        │  │              Old_microwave_1.tsx
-        │  │              Old_tv_1.tsx
-        │  │              Orange_sofa_1.tsx
-        │  │              Photo_frame_1.tsx
-        │  │              Photo_frame_2.tsx
-        │  │              Red_chair_1.tsx
-        │  │              Red_lights_1.tsx
-        │  │              Red_sofa_1.tsx
-        │  │              Red_telephone_1.tsx
-        │  │              Retro_arcadegame_1.tsx
-        │  │              Round_table_1.tsx
-        │  │              Small_speaker_1.tsx
-        │  │              Stall_white_chair_1.tsx
-        │  │              Starwars_trooper_1.tsx
-        │  │              Teddybear_1.tsx
-        │  │              Tree_vase_1.tsx
-        │  │              Trooper_figure_1.tsx
-        │  │              White_chair_1.tsx
-        │  │              White_controller_1.tsx
-        │  │              White_skeleton_1.tsx
-        │  │              White_sofa_1.tsx
-        │  │              White_table_1.tsx
-        │  │              Wine_glass_1.tsx
-        │  │              Wood_chair_1.tsx
-        │  │              Wood_desk_0.tsx
-        │  │              Wood_desk_1.tsx
-        │  │              Wood_desk_2.tsx
-        │  │              Wood_drawer_1.tsx
-        │  │              Wood_shelve.tsx
-        │  │              Wood_table_1.tsx
-        │  │              Yellow_sofa_1.tsx
-        │  │
         │  ├─Loading
-        │  │      Loading.tsx
-        │  │
         │  ├─Login
         │  │  ├─LoginForm
-        │  │  │      LoginForm.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  ├─Models
-        │  │  │  │  CameraAndLight.tsx
-        │  │  │  │  F1.tsx
-        │  │  │  │  F2.tsx
-        │  │  │  │  F3.tsx
-        │  │  │  │  LoginModel.tsx
-        │  │  │  │  M1.tsx
-        │  │  │  │  M2.tsx
-        │  │  │  │  M3.tsx
-        │  │  │  │
         │  │  │  └─OtherModles
-        │  │  │          F1_Other.tsx
-        │  │  │          F2_Other.tsx
-        │  │  │          F3_Other.tsx
-        │  │  │          M1_Other.tsx
-        │  │  │          M2_Other.tsx
-        │  │  │          M3_Other.tsx
-        │  │  │
         │  │  ├─UserCharacter
-        │  │  │      styles.tsx
-        │  │  │      UserCharacter.tsx
-        │  │  │
         │  │  ├─UserCharacterWrapper
-        │  │  │      styles.tsx
-        │  │  │      UserCharacterWrapper.tsx
-        │  │  │
         │  │  └─UserInfoForm
-        │  │          styles.tsx
-        │  │          UserInfoForm.tsx
-        │  │
         │  ├─Main
         │  │  ├─Models
-        │  │  │      AirBalloon.tsx
-        │  │  │      Bloomer.tsx
-        │  │  │      Car.tsx
-        │  │  │      Csquiz_font.tsx
-        │  │  │      CS_direct.tsx
-        │  │  │      Deco.tsx
-        │  │  │      DoLearn.tsx
-        │  │  │      F1_Main.tsx
-        │  │  │      F2_Main.tsx
-        │  │  │      F3_Main.tsx
-        │  │  │      Feed.tsx
-        │  │  │      Feed_direct.tsx
-        │  │  │      Feed_font.tsx
-        │  │  │      Floor.tsx
-        │  │  │      Flower.tsx
-        │  │  │      Grass.tsx
-        │  │  │      Ground.tsx
-        │  │  │      House.tsx
-        │  │  │      ItemShopMap.tsx
-        │  │  │      ItemShop_font.tsx
-        │  │  │      Learnway.tsx
-        │  │  │      M1_Main.tsx
-        │  │  │      M2_Main.tsx
-        │  │  │      M3_Main.tsx
-        │  │  │      Maker.tsx
-        │  │  │      Myroom_font.tsx
-        │  │  │      NewCsQuiz.tsx
-        │  │  │      Obaek.tsx
-        │  │  │      Osakak.tsx
-        │  │  │      Room_direct.tsx
-        │  │  │      Sellog.tsx
-        │  │  │      Shop_direct.tsx
-        │  │  │      Stone.tsx
-        │  │  │      Tantan.tsx
-        │  │  │      Tree.tsx
-        │  │  │      Weather.tsx
-        │  │  │      Ydg.tsx
-        │  │  │
         │  │  └─ToggleButton
-        │  │          styles.tsx
-        │  │          ToggleButton.tsx
-        │  │
         │  ├─MyGoals
         │  │  ├─Accumulate
-        │  │  │      Accumulate.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  ├─Chart
-        │  │  │      Chart.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  ├─DailyDoneItem
-        │  │  │      DailyDoneItem.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  ├─DailyDoneList
-        │  │  │      DailyDoneList.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  ├─DailyDoneModal
-        │  │  │      DailyDoneModal.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  ├─GoalsSetting
-        │  │  │      GoalsSetting.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  ├─GoalsSettingModal
-        │  │  │      GoalsSettingModal.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  ├─RCalendar
-        │  │  │      RCalendar.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  ├─Record
-        │  │  │      Record.tsx
-        │  │  │      styles.tsx
-        │  │  │
         │  │  └─SettingButtons
-        │  │          SettingButtons.tsx
-        │  │          styles.tsx
-        │  │
         │  └─MyRoom
         │      ├─EditProfile
-        │      │      EditProfile.tsx
-        │      │      styles.tsx
-        │      │
         │      ├─EditProfileModal
-        │      │      EditProfileModal.tsx
-        │      │      styles.tsx
-        │      │
         │      ├─InstallModal
-        │      │      InstallModal.tsx
-        │      │      styles.tsx
-        │      │
         │      ├─Models
-        │      │      Room1.tsx
-        │      │      Room2.tsx
-        │      │      Room3.tsx
-        │      │      Room4.tsx
-        │      │
         │      ├─MyItemItem
-        │      │      MyItemItem.tsx
-        │      │      styles.tsx
-        │      │
         │      ├─MyItemList
-        │      │      MyItemList.tsx
-        │      │      styles.tsx
-        │      │
         │      ├─MyProfile
-        │      │      MyProfile.tsx
-        │      │      styles.tsx
-        │      │
         │      ├─MyRoomContainer
-        │      │      MyRoomContainer.tsx
-        │      │      styles.tsx
-        │      │
         │      ├─NoTarget
-        │      │      NoTarget.tsx
-        │      │      styles.tsx
-        │      │
         │      ├─RoomEditContainer
-        │      │  │  RoomEditContainer.tsx
-        │      │  │
         │      │  └─Models
-        │      │          Bedside_light_1.tsx
-        │      │          Black_chair_1.tsx
-        │      │          Black_coffeemachine_1.tsx
-        │      │          Black_cup_1.tsx
-        │      │          Black_leather_sofa_1.tsx
-        │      │          Black_speaker_1.tsx
-        │      │          Black_teatable_1.tsx
-        │      │          Blue_bed.tsx
-        │      │          Blue_chair_1.tsx
-        │      │          Blue_chair_2.tsx
-        │      │          Blue_sofa_1.tsx
-        │      │          Brown_table_1.tsx
-        │      │          Brown_table_2.tsx
-        │      │          Brown_table_3.tsx
-        │      │          Brown_table_4.tsx
-        │      │          Coffee_cup_1.tsx
-        │      │          Elec_guitar_1.tsx
-        │      │          Elec_guitar_2.tsx
-        │      │          Elec_guitar_3.tsx
-        │      │          Giant_sofa_1.tsx
-        │      │          Green_sofa_1.tsx
-        │      │          Grey_bin_1.tsx
-        │      │          Group_guitar_1.tsx
-        │      │          House_tree_1.tsx
-        │      │          Imac_computer_1.tsx
-        │      │          Katana_decoration_1.tsx
-        │      │          Leopard_chair_1.tsx
-        │      │          Low_table_1.tsx
-        │      │          Marble_table_1.tsx
-        │      │          Marble_table_2.tsx
-        │      │          Old_computer_1.tsx
-        │      │          Old_computer_2.tsx
-        │      │          Old_microwave_1.tsx
-        │      │          Old_tv_1.tsx
-        │      │          Orange_sofa_1.tsx
-        │      │          Photo_frame_1.tsx
-        │      │          Photo_frame_2.tsx
-        │      │          Red_chair_1.tsx
-        │      │          Red_lights_1.tsx
-        │      │          Red_sofa_1.tsx
-        │      │          Red_telephone_1.tsx
-        │      │          Retro_arcadegame_1.tsx
-        │      │          Round_table_1.tsx
-        │      │          Small_speaker_1.tsx
-        │      │          Stall_white_chair_1.tsx
-        │      │          Starwars_trooper_1.tsx
-        │      │          Teddybear_1.tsx
-        │      │          Tree_vase_1.tsx
-        │      │          Trooper_figure_1.tsx
-        │      │          White_chair_1.tsx
-        │      │          White_controller_1.tsx
-        │      │          White_skeleton_1.tsx
-        │      │          White_sofa_1.tsx
-        │      │          White_table_1.tsx
-        │      │          Wine_glass_1.tsx
-        │      │          Wood_chair_1.tsx
-        │      │          Wood_desk_0.tsx
-        │      │          Wood_desk_1.tsx
-        │      │          Wood_desk_2.tsx
-        │      │          Wood_drawer_1.tsx
-        │      │          Wood_shelve.tsx
-        │      │          Wood_table_1.tsx
-        │      │          Yellow_sofa_1.tsx
-        │      │
         │      ├─RoomEditItems
         │      │  └─Models
-        │      │          ChairEdit.tsx
-        │      │          WoodDeskEdit.tsx
-        │      │
         │      └─WithdrawModal
-        │              styles.tsx
-        │              WithdrawModal.tsx
-        │
         ├─pages
         │  ├─CSQuiz
-        │  │      CSQuiz.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─CSQuizBattleResult
-        │  │      CSQuizBattleResult.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─CSQuizMap
-        │  │  │  CSQuizMap.tsx
-        │  │  │  styles.tsx
-        │  │  │
         │  │  └─Models
-        │  │          OMark.tsx
-        │  │          XMark.tsx
-        │  │
         │  ├─CSQuizMatching
-        │  │      CSQuizMatching.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─CSQuizProgress
-        │  │      CSQuizProgress.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─CSQuizResult
-        │  │      CSQuizResult.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─CSQuizSelect
-        │  │      CSQuizSelect.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─Feed
-        │  │      Feed.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─Info
-        │  │      Info.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─ItemShop
-        │  │      ItemShop.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─Login
-        │  │      Login.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─Main
-        │  │      Main.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─MyGoals
-        │  │      MyGoals.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─MyRoom
-        │  │  │  MyRoom.tsx
-        │  │  │  styles.tsx
-        │  │  │
         │  │  └─MyItems
-        │  │          MyItems.tsx
-        │  │          styles.tsx
-        │  │
         │  ├─NotFound
-        │  │      NotFound.tsx
-        │  │      styles.tsx
-        │  │
         │  ├─OauthRedirect
-        │  │      OauthRedirect.tsx
-        │  │
         │  └─TermsOfUse
-        │          styles.tsx
-        │          TermsOfUse.tsx
-        │
         ├─recoil
         │  ├─csquiz
-        │  │      atoms.tsx
-        │  │      selectors.tsx
-        │  │      useCSquiz.tsx
-        │  │
         │  ├─feed
-        │  │      atoms.tsx
-        │  │      selectors.tsx
-        │  │      useFeed.tsx
-        │  │
         │  ├─itemshop
-        │  │      atoms.tsx
-        │  │      selectors.tsx
-        │  │      useItemshop.tsx
-        │  │
         │  ├─mainpage
-        │  │      atoms.tsx
-        │  │      selectors.tsx
-        │  │      useMainpage.tsx
-        │  │
         │  ├─mygoals
-        │  │      atoms.tsx
-        │  │
         │  ├─myroom
-        │  │      atoms.tsx
-        │  │      myroom.tsx
-        │  │      selectors.tsx
-        │  │
         │  └─user
-        │          atom.ts
-        │
         ├─typeModels
         │  ├─Feed
-        │  │      feedinterfaces.ts
-        │  │
         │  ├─ItemShop
-        │  │      iteminterfaces.ts
-        │  │
         │  ├─mygoals
-        │  │      myGoalInterfaces.ts
-        │  │      myRecordInterfaces.ts
-        │  │
         │  ├─MyRoom
-        │  │      MyroomInterfaces.ts
-        │  │
         │  └─user
-        │          userEditInfo.ts
-        │          userSignup.ts
-        │
         └─utils
-                itemDefaultInfo.ts
-                token.ts
 ```
 
 </details>
@@ -1392,7 +734,6 @@ C:.
 
 ### I. 회원가입 및 로그인
 
-
 - GitHub ID를 통한 소셜 로그인으로 서비스를 이용할 수 있습니다.
 - 신규 회원이라면 소셜로그인 후 캐릭터, 이름, 좌우명을 필수 사항으로 입력받으며, 이메일, GitHub, 블로그 주소를 선택 사항으로 입력받습니다. 입력받은 정보는 메인 페이지 및 MyRoom 페이지에서 활용됩니다.
 
@@ -1401,7 +742,7 @@ C:.
 ### II. 이용안내
 
 | ![info](https://github.com/bohodays/Algorithm_problem_solving/assets/109454527/9362584d-ed38-4133-8148-b03f25525474) |
-| :------------------------------------------------------------------------------------------------------------------: |
+|:--------------------------------------------------------------------------------------------------------------------:|
 
 - 회원가입을 완료하면 전체적인 서비스에 대한 이용 안내 페이지로 이동합니다.
 - 스크롤을 통해 서비스의 주요기능들에 대한 안내사항을 볼 수 있으며, 좌측 상단의 버튼을 누르면 메인 페이지로 이동할 수 있습니다.
@@ -1411,7 +752,6 @@ C:.
 
 ### III. Main 페이지
 
-
 - 유저의 캐릭터와 맵이 3D로 표시되며, 마우스 클릭을 통해 맵을 자유롭게 이동할 수 있습니다.
 - 각 페이지의 Spot으로 이동하면 해당 페이지로 이동할 수 있는 버튼이 나타납니다.
 - 우측 상단의 토글 버튼을 통해서도 원하는 페이지로 이동할 수 있습니다.
@@ -1419,7 +759,6 @@ C:.
 <br />
 
 ### IV. My Room 페이지
-
 
 - MyRoom의 좌측 탭에서는 유저의 프로필 정보와 유저가 설정한 습관을 확인할 수 있습니다.
 - 우측 탭에서는 유저의 3D 방을 볼 수 있습니다.
@@ -1432,10 +771,12 @@ C:.
 - My Goals 페이지에서는 5가지(Github, Blog, Algorithm, Feed, CS Quiz)의 습관을 설정할 수 있고, 달성한 습관들에 대한 통계 및 상세 정보를 확인할 수 있습니다.
 
 - 습관 설정
+  
   - 좌측 탭에서 각 습관 설정 버튼을 누르면 모달을 통해 유저가 원하는 습관 주기를 설정할 수 있습니다.
   - 습관 주기는 추천 주기가 제시되며, 추천 주기로 설정할 시 누적보상을 획득할 수 있습니다.
 
 - 통계 및 상세정보
+  
   - 우측 탭의 상단에서는 각 습관별 유지 중인 일수와 누적 보상 정보를 확인할 수 있습니다.
   - 차트를 통해 각 습관을 달성한 횟수를 시각적으로 확인할 수 있습니다.
   - 우측 탭의 하단에서는 캘린더를 통해 일자별 달성한 습관의 상세정보를 확인할 수 있습니다.
@@ -1445,7 +786,6 @@ C:.
 
 ### VI. Item Shop 페이지
 
-
 - Item Shop 페이지에서는 습관 달성을 통해 획득한 포인트로 아이템을 구매할 수 있습니다.
 - 아이템들은 카테고리로 구분되어 있으며, 좌측 버튼을 통해 카테고리별 아이템을 확인할 수 있습니다.
 - 각 아이템을 클릭하면 미리보기 화면이 3D로 제공되며, 마우스를 통해 회전시켜 다양한 각도에서 아이템을 확인할 수 있습니다.
@@ -1454,7 +794,6 @@ C:.
 
 ### VII. CS Quiz 페이지 (1) - Solo Play
 
-
 - Solo Play에서는 5가지(Data Structure, Operating System, Database, Network, Programming Common)의 영역 중 한 가지를 선택하면 5문제가 출제됩니다.
 - 각 문제는 4지선다로 이루어져 있으며, 2분의 제한시간이 있습니다.
 
@@ -1462,15 +801,12 @@ C:.
 
 ### VII. CS Quiz 페이지 (2) - 1vs1 Battle
 
-
 - 1vs1 Battle에서는 다른 유저와 실시간 CS Quiz 대결을 할 수 있습니다.
 - 매칭이 이루어지면 3개의 OX 퀴즈가 출제되며, 각 문제당 10초의 제한시간이 있습니다.
-
 
 <br>
 
 ### VIII. Feed 페이지
-
 
 - 개발자 피드 페이지에서는 유명 IT 기업들의 기술 블로그를 모아 볼 수 있습니다.
 - 좌측 nav바에서는 조회수가 높은 게시글 10개를 확인 할 수 있습니다.
@@ -1478,7 +814,6 @@ C:.
 <br>
 
 ### VIII. Feed 페이지
-
 
 - 개발자 피드 페이지에서는 유명 IT 기업들의 기술 블로그를 모아 볼 수 있습니다.
 - 좌측 nav바에서는 조회수가 높은 게시글 10개를 확인 할 수 있습니다.
@@ -1491,7 +826,6 @@ C:.
 - ??
 
 <br>
-
 
 ## 🎥 [UCC 보러가기](https://www.youtube.com/watch?v=uhn50fvD4cY)
 
@@ -1523,8 +857,8 @@ C:.
 
 ## 📋 프로젝트 관련 문서
 
-| 구분           |                       링크                        |
-| :------------- | :-----------------------------------------------: |
-| 포팅 매뉴얼    |   [포팅 매뉴얼 바로가기](/exec/포팅_매뉴얼.pdf)   |
-| 시연 시나리오  | [시연 시나리오 바로가기](/exec/시연_시나리오.pdf) |
-| DB 덤프 데이터 |            [DB 덤프 데이터](exec/dump)            |
+| 구분        | 링크                                |
+|:--------- |:---------------------------------:|
+| 포팅 매뉴얼    | [포팅 매뉴얼 바로가기](/exec/포팅_매뉴얼.pdf)   |
+| 시연 시나리오   | [시연 시나리오 바로가기](/exec/시연_시나리오.pdf) |
+| DB 덤프 데이터 | [DB 덤프 데이터](exec/dump)            |
